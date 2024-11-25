@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: #333;
+    color: #fff;
+    font-family: "Poppins";
+    list-style: none;
+
+    & a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    & ul {
+        list-style: none;
+    }
+}
+
+header {
+    background-color: #333;
+    position: fixed;
+    min-width: 100%;
+    min-height: 60px;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    & .nav-bar {
+        width: 80%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & .nav-list {
+            position: relative;
+            gap: 40px;
+            display: flex;
+            flex-direction: row;
+
+            .nav-list-item{
+                position: relative;
+                
+                & a::after{
+                    content: "";
+                    position: absolute;
+                    background-color: #fff;
+                    width: 0%;
+                    height: 2px;
+                    left: 0;
+                    bottom: 0;
+                    transition: all 0.3s ease-in-out;
+                }
+                
+                & a:hover::after{
+                    width: 100%;
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+        }
+
+        & .logo {
+            cursor: pointer;
+        }
+    }
+}
+
+main {
+    min-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    z-index: -1000;
+
+    & .produtos {
+        padding-top: 60px;
+        width: 60%;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(3, 230px);
+        justify-content: center;
+        gap: 25px;
+
+        & .card-produto {
+            border-radius: 12px;
+            margin: 10px;
+            height: 250px;
+            background-color: #222;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+
+            & .img-item{
+                max-width: 100%;
+                height: 60%;
+
+                & img{
+                    width: 100%;
+                    height: 100%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+
+            & .item-description{
+                padding: 10px ;
+                width: 100%;
+                height: 40%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                & span{
+                    font-size: 0.9rem;
+                    font-weight: 900;
+                }
+
+                & .buttons-item{
+
+                    & button{
+                        padding: 5px;
+                        background-color: green;
+                        border: none;
+                        border-radius: 12px;
+                        color: #fff;
+                        cursor: pointer;
+                    }
+
+                    & button:hover{
+                        border: 1px solid #fff;
+                    }
+                }
+            }
+        }
+
+        & .card-produto:hover{
+            scale: 1.05;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    & .carrinho{
+        position: fixed;
+        top: 70px;
+        right: 0;
+        width: 40%;
+        height: 100vh;
+        background-color: #555;
+        z-index: 1000;
+
+        & .carrinho-itens{
+            margin-left: 20px;
+            
+            & .card-carrinho{
+                background-color: #222;
+                width: 90%;
+                height: 100px;
+                display: flex;
+                border-radius: 12px;
+
+                & .img-carrinho{
+                    width: 40%;
+                    height: 100%;
+                }
+
+                & .carrinho-description{
+                    width: 50%;
+                    height: 100%;
+                    line-height: -70px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+
+                & .remover-produto{
+                    margin: auto auto;
+                    width: 50px;
+                    height: 50px;
+                    cursor: pointer;
+                    background: inherit;
+                    border: none;
+                    z-index: 1000;
+
+                    & ion-icon{
+                        width: 30px;
+                        height: 30px;
+                        color: red;
+                    }
+                }
+            }
+        }
+
+        & .total-carrinho{
+            margin-left: 20px;
+        }
+
+        & .botao-compra{
+            margin-left: 20px;
+        }
+    }
+
+    & .modal-confirm{
+        position: absolute;
+        z-index: 1000;
+        left: 35%;
+        height: 50px;
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        border: 2px solid green;
+        background-color: #222;
+        top: -100px;
+        transition: all 0.5s ease-in-out;
+
+        & .modal-text{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    & .modal-confirm.active{
+        animation: Modal 1s ease-out;
+    }
+}
+
+@keyframes Modal{
+    from{
+        top: -100px;
+    }
+
+    to{
+        top: 30px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    header{
+        position: fixed;
+        bottom: 0;
+
+        & .logo{
+            display: none;
+            top: 10px;
+            z-index: 100;
+        }
+    }
+}
