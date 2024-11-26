@@ -5,7 +5,7 @@ let totalCarrinho = 0;
 // Função para adicionar um item ao carrinho
 function BuyerConfirm() {
     // Recupera as informações do produto
-    const imagemProduto = event.target.closest('.card-produto').querySelector('.img-item img').src.replace("http://127.0.0.1:3000", '.');
+    const imagemProduto = event.target.closest('.card-produto').querySelector('.img-item img').src;
     console.log(imagemProduto)
     const produtoNome = event.target.closest('.card-produto').querySelector('.item-description p').innerText;
     const produtoPreco = parseFloat(event.target.closest('.card-produto').querySelector('.item-description span i').innerText.replace('R$', '').replace(',', '.').replace('.', '').trim());
@@ -41,12 +41,13 @@ function atualizarCarrinho() {
         // Conteúdo do minicard
         minicard.innerHTML = `
             <div class="img-carrinho">
-                <img src="${item.imagemProduto}" alt="imagem produto">
+                <img src="${item.imagem}" alt="imagem produto">
             </div>
 
             <div class="carrinho-description">
                 <h3 class="nome-produto">${item.nome}</h3>
                 <p class="preco-produto">R$${item.preco.toFixed(2).replace(".", ",")}</p>
+                <input type="number" min="1" value="1">
             </div>
 
             <button class="remover-produto" onclick="removerProduto(${index})"><ion-icon name="trash-bin-outline"></ion-icon></button>

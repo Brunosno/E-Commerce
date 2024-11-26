@@ -175,40 +175,53 @@ main {
         & .carrinho-itens{
             margin-left: 20px;
             
-            & .card-carrinho{
-                background-color: #222;
-                width: 90%;
-                height: 100px;
+            & #itens-carrinho{
                 display: flex;
-                border-radius: 12px;
-
-                & .img-carrinho{
-                    width: 40%;
-                    height: 100%;
-                }
-
-                & .carrinho-description{
-                    width: 50%;
-                    height: 100%;
-                    line-height: -70px;
+                flex-direction: column;
+                
+                & .card-carrinho{
+                    background-color: #222;
+                    width: 90%;
+                    height: 100px;
                     display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                }
+                    border-radius: 12px;
+                    margin-bottom: 10px;
+                    overflow: hidden;
+    
+                    & .img-carrinho{
+                        width: 40%;
+                        height: 100%;
 
-                & .remover-produto{
-                    margin: auto auto;
-                    width: 50px;
-                    height: 50px;
-                    cursor: pointer;
-                    background: inherit;
-                    border: none;
-                    z-index: 1000;
-
-                    & ion-icon{
-                        width: 30px;
-                        height: 30px;
-                        color: red;
+                        & img{
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+    
+                    & .carrinho-description{
+                        margin: auto 10px;
+                        width: 50%;
+                        height: 100%;
+                        line-height: -70px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+    
+                    & .remover-produto{
+                        margin: auto auto;
+                        width: 50px;
+                        height: 50px;
+                        cursor: pointer;
+                        background: inherit;
+                        border: none;
+                        z-index: 1000;
+    
+                        & ion-icon{
+                            width: 30px;
+                            height: 30px;
+                            color: red;
+                        }
                     }
                 }
             }
@@ -220,6 +233,16 @@ main {
 
         & .botao-compra{
             margin-left: 20px;
+
+            & button{
+                cursor: pointer;
+                border: none;
+                width: 150px;
+                height: 30px;
+                border-radius: 12px;
+                background-color: #008000;
+                color: #fff;
+            }
         }
     }
 
@@ -262,15 +285,41 @@ main {
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
     header{
         position: fixed;
-        bottom: 0;
+        top: 0;
 
         & .logo{
-            display: none;
+            font-size: 25px;
+            left: 10px;
             top: 10px;
             z-index: 100;
+        }
+
+        & .nav-list{
+            display: none;
+        }
+    }
+
+    main{
+
+        & .produtos{
+            position: absolute;   
+            width: 100vw;
+            grid-template-columns: repeat(1, 130px);
+
+            & .card-produto{
+                width: 350px;
+                height: 100px;
+                display: flex;
+                flex-direction: row;
+            }
+        }
+
+        & .carrinho{
+            position: absolute;
+            display: none;
         }
     }
 }
